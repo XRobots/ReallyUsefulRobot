@@ -11,3 +11,18 @@ Encoders and cables are the 8192 CPR encoders also from the ODrive store.
 I used a 56V ODrive 3.6, the robot runs from a 24V LiPo, but it can be 25V+ when it's charged.
 Drive belts are 590mm T5 12mm wide PU belts with steel tensioners made by Synchroflex.
 
+Other electronics so far include:
+
+-Teensy 4.1
+-NVIDIA Xavier NX
+-RPLIDAR A2
+-24v and 11.1v lipos, switches and wiring etc
+
+## Software
+
+The Robot runs ROS Melodic on Ubuntu 18.04. This is because the NVIDIA Xavier NX runs 18.04 by default.
+
+On the robot:
+
+The arduino code runs on the Teensy 4.1. This talks to the wheel encoders. It subscribres to the cmd_vel topic and publishes Odom, and TF for the robot's motions. The RPLIDAR A2 node publishes the scan topic: https://github.com/robopeak/rplidar_ros
+
