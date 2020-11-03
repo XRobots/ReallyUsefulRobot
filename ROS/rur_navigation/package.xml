@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rur_navigation</name>
+  <version>1.2.4</version>
+  <description>
+    The rur_navigation provides roslaunch scripts for starting the navigation.
+  </description>
+  <license>Apache 2.0</license>
+  <author email="xrobots@gmail.com">Pyo</author>
+  <author email="xrobots@gmail.com">Darby Lim</author>
+  <author email="xrobots@gmail.com">Gilbert</author>
+  <author>Leon Jung</author>
+  <maintainer email="xrobots@gmail.com">Will Son</maintainer>
+  <url type="website">http://xrobots.co.uk</url>
+  <url type="emanual">http://xrobots.co.uk</url>
+  <url type="repository">https://github.com/xrobots</url>
+  <url type="bugtracker">https://github.com/xrobots</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>move_base</exec_depend>
+</package>

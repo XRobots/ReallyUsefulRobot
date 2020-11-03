@@ -1,0 +1,64 @@
+8192 CPR encoders
+ 
+15:96 reduction = 6.4:1
+
+200 mm dia wheels, 628.32 mm circumference
+
+360 mm width between wheels
+
+
+=================================
+
+driving forward:
+
+1 revolution = 628.32 mm travelled
+= 6.4 motor revolutions
+= 52,428 encoder counts
+
+----
+
+each mm travelled:
+= 52,428 / 628.32
+= 83.44 counts per mm
+
+----
+
+1.592 revolutions = 1 metre travelled
+83,466 encoder counts
+
+----
+
+each metre/sec = 83,466 encoder counts/sec
+
+=================================
+
+turning:
+
+2pi radians = 360'  and  pi radians = 180'
+
+distance each wheel has to go to travel 180' 
+= circumferece of width between wheels / 2
+= (360mm * pi) / 2
+= 1130.97 mm circumference / 2
+= 565.48 mm half circumference (= 180')
+= pi radians
+
+----
+
+565.48 mm =  0.9 wheel revolutions
+= 5.78 motor revolutions
+= 47411 encoder counts
+= pi radians (= 180')
+
+----
+
+1 radian = 47411 / pi 
+= 15091 encoder counts
+
+---- 
+
+each radian/sec = 18691 encoder counts/sec, ON BOTH WHEELS IN OPPOSITE DIRECTIONS
+
+
+
+

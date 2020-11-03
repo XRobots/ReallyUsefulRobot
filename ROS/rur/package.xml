@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rur</name>
+  <version>1.0.0</version>
+  <description>The rur robot main package</description>
+
+  <maintainer email="xroots@gmail.com">James</maintainer>
+
+  <license>GPLv3</license>
+
+  <url type="website">http://xroots.co.uk</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rur_description</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>rur_description</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rur_description</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
+</package>

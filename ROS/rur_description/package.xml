@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rur_description</name>
+  <version>1.0.0</version>
+  <description>The rur robot model package</description>
+
+  <maintainer email="xroots@gmail.com">James</maintainer>
+
+  <license>GPLv3</license>
+
+  <url type="website">http://xrobots.co.uk</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>urdf</exec_depend>
+
+</package>
