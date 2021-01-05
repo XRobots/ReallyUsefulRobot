@@ -9,7 +9,8 @@ Tyres are printed in TPU, I used Ninjaflex. The rest in PLA printed with a combi
 Motors are 6374 150Kv BLDC motors from the ODrive store: https://odriverobotics.com/shop
 Encoders and cables are the 8192 CPR encoders also from the ODrive store.
 I used a 56V ODrive 3.6, the robot runs from a 24V LiPo, but it can be 25V+ when it's charged.
-Drive belts are 590mm T5 12mm wide PU belts with steel tensioners made by Synchroflex.
+Wheel Drive belts are 590mm T5 12mm wide PU belts with steel tensioners made by Synchroflex.
+'Utility Stick' drive belt is an HTD 5mm pitch 15mm wide 1790mm length belt.
 
 Other electronics so far include:
 
