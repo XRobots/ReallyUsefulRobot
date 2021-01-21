@@ -1,0 +1,23 @@
+rur_detailed_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  motor_right_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: motor_right
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  motor_left_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: motor_left
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  slider_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  camera_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: camera_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}

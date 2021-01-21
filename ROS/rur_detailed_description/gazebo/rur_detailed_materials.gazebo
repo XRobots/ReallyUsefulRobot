@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<robot name="rur_detailed" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/White" />
+<xacro:property name="blue_color" value="Gazebo/Blue" />
+<xacro:property name="lidar_color" value="Gazebo/Black" />
+<xacro:property name="metal_color" value="Gazebo/Grey" />
+<xacro:property name="screen_color" value="Gazebo/Black" />
+
+<!-- ############# WHITE COLOR ############# -->
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="right_tyre">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="left_tyre">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="lid">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="head">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="monitor_cover">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="camera_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="realsense">
+  <material>${body_color}</material>
+</gazebo>
+
+<!-- ################ BLUE COLOR ################ -->
+
+<gazebo reference="right_wheel">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="left_wheel">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="front_caster">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="back_caster">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="electronics_lid">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="visor">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="right_ear">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="left_ear">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="left_antenna">
+  <material>${blue_color}</material>
+</gazebo>
+
+<gazebo reference="right_antenna">
+  <material>${blue_color}</material>
+</gazebo>
+
+<!-- ################ LIDAR COLOR ################ -->
+
+<gazebo reference="lidar">
+  <material>${lidar_color}</material>
+</gazebo>
+
+<!-- ################ METAL COLOR ################ -->
+
+<gazebo reference="long_bar">
+  <material>${metal_color}</material>
+</gazebo>
+
+<!-- ################ SCREEN COLOR ################ -->
+
+<gazebo reference="monitor">
+  <material>${screen_color}</material>
+</gazebo>
+
+</robot>
