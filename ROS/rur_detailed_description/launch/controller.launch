@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find rur_detailed_description)/launch/controller.yaml" command="load"/>
+<node args="motor_right_position_controller motor_left_position_controller slider_position_controller camera_joint_position_controller joint_state_controller " name="controller_spawner" ns="rur_detailed" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/rur_detailed/joint_states"/>
+</node>
+
+</launch>

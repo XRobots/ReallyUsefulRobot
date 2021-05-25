@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<robot name="rur_detailed" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<!-- ############# ROS CONTROL ############# -->
+
+<gazebo>
+  <plugin filename="libgazebo_ros_control.so" name="control"/>
+</gazebo>
+
+<!-- ############# DIFFERENTIAL DRIVE ############# -->
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <updateRate>20</updateRate>
+    <leftJoint>motor_left</leftJoint>
+    <rightJoint>motor_right</rightJoint>
+    <wheelSeparation>0.36</wheelSeparation>
+    <wheelDiameter>0.20</wheelDiameter>
+    <wheelAcceleration>1.0</wheelAcceleration>
+    <wheelTorque>20</wheelTorque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <odometrySource>1</odometrySource>
+    <publishWheelTF>true</publishWheelTF>
+    <publishOdom>true</publishOdom>
+    <publishWheelJointState>true</publishWheelJointState>
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
+
+<!-- ############# LIDAR PLUGIN ############# -->
+
+ <gazebo reference="lidar">
+    <sensor type="ray" name="rplidar_a1">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-2.87979</min_angle>
+            <max_angle>2.87979</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>20.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>lidar</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>
