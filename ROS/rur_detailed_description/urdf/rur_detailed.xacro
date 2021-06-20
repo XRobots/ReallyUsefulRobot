@@ -569,12 +569,18 @@
   <child link="right_antenna"/>
 </joint>
 
-<joint name="camera_joint" type="revolute">
+<!-- <joint name="camera_joint" type="revolute">
   <origin rpy="0 0 0" xyz="0.07175 -0.072 0.33"/>
   <parent link="head"/>
   <child link="camera_link"/>
   <axis xyz="0.0 1.0 -0.0"/>
   <limit effort="100" lower="-3.141593" upper="3.141593" velocity="100"/>
+</joint> -->
+
+<joint name="camera_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.07175 -0.072 0.33"/>
+  <parent link="head"/>
+  <child link="camera_link"/>
 </joint>
 
 <joint name="Rigid20" type="fixed">

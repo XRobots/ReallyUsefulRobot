@@ -1,7 +1,8 @@
 <launch>
   <!-- Arguments -->
-  <arg name="open_rviz" default="true"/>
+  <arg name="open_rviz" default="false"/>
   <arg name="move_forward_only" default="false"/>
+  <arg name="map_file" default="$(find rur_navigation)/maps/house_map.yaml"/>
 
   <!-- Really Usefull Robot -->
 

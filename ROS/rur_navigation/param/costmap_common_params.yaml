@@ -1,4 +1,4 @@
-robot_radius: 0.225
+robot_radius: 0.30
 
 transform_tolerance: 0.4
 map_type: costmap
@@ -7,7 +7,7 @@ obstacle_layer:
  enabled: true
  obstacle_range: 2.5
  raytrace_range: 3.5
- inflation_radius: 0.2
+ inflation_radius: 0.5
  track_unknown_space: false
  combination_method: 1
 
@@ -18,7 +18,7 @@ obstacle_layer:
 inflation_layer:
   enabled:              true
   cost_scaling_factor:  5.0  # exponential rate at which the obstacle cost drops off (default: 10)
-  inflation_radius:     0.3   # max distance from an obstacle at which costs are incurred for planning paths.
+  inflation_radius:     0.5   # max distance from an obstacle at which costs are incurred for planning paths.
 
 static_layer:
   enabled:              true
