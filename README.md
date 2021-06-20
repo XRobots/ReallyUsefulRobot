@@ -43,5 +43,23 @@ There is no launch file for gmapping, so having launched the rur_bringup package
 After the map is complete you can launch the rur_navigation package which will open Rviz automatically. Use: roslaunch rur_navigation rur_navigation.launch map_file:=$HOME/map.yaml   to connect to the map you saved.
 
 
+## Simulation
 
+You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up gates for the Open-Source community to build various different applications around RUR.
 
+### Downloading Pre-requisites
+
+If you have not downloaded the full-desktop-version of ROS which comes with Gazebo Simulator, then you might need to download a couple of pre-requisites to run the simulation. Even if you have downloaded the full version, yet its a good practice to run the following command which checks if all the pre-requisites are installed or not. And if they are not installed, then the same command downloads them all automatically.
+
+```
+sudo apt-get install gazebo9 libgazebo9-* ros-melodic-robot-state-publisher ros-melodic-robot-joint-state-publisher ros-melodic-robot-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-gmapping ros-melodic-slam-gmapping ros-melodic-map-server
+```
+
+### Testing the simulation
+
+Firstly, please place this complete repository or just the ROS folder into your src folder of [catkin_ws](http://wiki.ros.org/catkin/Tutorials) and run catkin_make command. Once the catkin_make is done successfully, then to launch the robot in an empty simulation world for testing in Gazebo Simulator, run the following command on your terminal
+
+```
+roslaunch rur_detailed_description gazebo.launch
+```
+![roslaunch rur_detailed_description gazebo.launch](https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/ROS/rur_gazebo/sample/pictures/gazebo_launch.png)
