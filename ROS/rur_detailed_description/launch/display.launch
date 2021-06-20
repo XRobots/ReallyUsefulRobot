@@ -3,7 +3,7 @@
 <launch>
 
   <arg default="$(find rur_detailed_description)/urdf/rur_detailed.xacro" name="model"/>
-  <arg default="true" name="gui"/>
+  <arg default="false" name="gui"/>
   <arg default="$(find rur_detailed_description)/rviz/urdf.rviz" name="rvizconfig"/>
 
   <param command="$(find xacro)/xacro $(arg model)" name="robot_description"/>
