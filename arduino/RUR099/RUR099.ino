@@ -24,6 +24,8 @@ nav_msgs::Odometry odom_msg;
 ros::Publisher odom_pub("odom", &odom_msg);
 tf::TransformBroadcaster broadcaster;
 
+std_msgs::UInt16 eye_msg;
+ros::Publisher pub_eye("eye", &eye_msg);
 
 // tf variables to be broadcast
 double x = 0;
@@ -44,13 +46,18 @@ float demandz;
 
 float demandArmX;           // demand values from sticks
 float demandArmY;
-float demandArmZ;       
+float demandArmZ;  
+
+float demandEye;        
 
 float demandArmZAccum;      // accumulators for manual mode
 float demandArmXAccum;
 float demandArmYAccum;
 float demandArmXAccum2;
 float demandArmYAccum2;
+
+float demandEyeAccum;
+float demandEyeAccum2;
 
 // timers for the sub-main loop
 unsigned long currentMillis;
@@ -106,16 +113,30 @@ int offset10 = 90;   // 90 folded
 int offset20 = 180;  // 270 folded
 int offset30 = 180;  // 90 folded
 int offset40 = 180;  // 180 mid
+int offset50 = 180;  // 180 mid
 
 float pos10;
 float pos20;
 float pos30;
 float pos40;
+float pos50;
+float pos50Pub;
 
 float finPos10;
 float finPos20;
 float finPos30;
 float finPos40;
+float finPos50;
+
+float finPos10Prev;
+float finPos20Prev;
+float finPos30Prev;
+float finPos40Prev;
+float finPos50Prev;
+
+float armX = 350;         // variables received from Vector3 message to drive arm
+float armY = 145;
+float armZ = 0;
 
 int pot1;   // test pots from video part 4
 int pot2;
@@ -160,6 +181,8 @@ void velCallback(  const geometry_msgs::Twist& vel)
      demandArmX = vel.angular.x;
      demandArmY = vel.angular.y;
      demandArmZ = vel.linear.z;
+
+     demandEye = vel.linear.y;
 }
 
 void foldArm( const std_msgs::UInt16& cmd_msg){
@@ -175,8 +198,15 @@ void foldArm( const std_msgs::UInt16& cmd_msg){
   modeOld = mode;
 }
 
+void armCoords( const geometry_msgs::Vector3 cmd_msg){
+  armX = (cmd_msg.x);
+  armY = (cmd_msg.y);
+  armZ = (cmd_msg.z);
+}
+
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel" , velCallback);  
 ros::Subscriber<std_msgs::UInt16> sub2("buttons", foldArm);
+ros::Subscriber<geometry_msgs::Vector3> sub3("armCoords", armCoords);
 
 // ** Setup **
 
@@ -186,8 +216,10 @@ void setup() {
   nh.initNode();              // init ROS
   nh.subscribe(sub);          // subscribe to cmd_vel
   nh.subscribe(sub2);          // subscribe to arm fold
+  nh.subscribe(sub3);          // subscribe to Vector3 arm messages
   nh.advertise(odom_pub);
   broadcaster.init(nh);       // set up broadcaster
+  nh.advertise(pub_eye);   // advertise eye topic
 
   pinMode(2, INPUT_PULLUP);   // ODrive init switch
   pinMode(3, INPUT_PULLUP);   // linear axis home switch
@@ -214,11 +246,13 @@ void setup() {
   dxl.ping(20);
   dxl.ping(30);
   dxl.ping(40);
+  dxl.ping(50);
   // Turn off torque when configuring items in EEPROM area
   dxl.torqueOff(10);
   dxl.torqueOff(20);
   dxl.torqueOff(30);
   dxl.torqueOff(40);
+  dxl.torqueOff(50);
   dxl.setOperatingMode(10, OP_POSITION);
   dxl.setOperatingMode(20, OP_POSITION);
   dxl.setOperatingMode(30, OP_POSITION);
@@ -227,13 +261,15 @@ void setup() {
   dxl.torqueOn(20);
   dxl.torqueOn(30);
   dxl.torqueOn(40);
+  dxl.torqueOn(50);
   // Limit the maximum velocity in Position Control Mode. Use 0 for Max speed
   dxl.writeControlTableItem(PROFILE_VELOCITY, 10, 30);
   dxl.writeControlTableItem(PROFILE_VELOCITY, 20, 30);
   dxl.writeControlTableItem(PROFILE_VELOCITY, 30, 30);
   dxl.writeControlTableItem(PROFILE_VELOCITY, 40, 30);
+  dxl.writeControlTableItem(PROFILE_VELOCITY, 50, 30);
 
-  fold = 0;   // start with arm folded away
+  fold = 1;   // start with arm folded out for testing
 
 }
 
@@ -255,7 +291,9 @@ void loop() {
             button2 = digitalRead(3);                 // home linear axis
             prox = digitalRead(41);                   // proximity switch
 
-            demandArmZAccum = demandArmZAccum + (demandArmZ * 160);   /// add or subtract to the value on each cycle.
+            //demandArmZAccum = demandArmZAccum + (demandArmZ * 160);   /// add or subtract to the value on each cycle.
+            //demandArmZAccum = constrain (demandArmZAccum, -50000,0);
+            demandArmZAccum = armZ;   // use data from Vector3 message instead
             demandArmZAccum = constrain (demandArmZAccum, -50000,0);
 
             if  (homeFlag == 0 && button2 == 0) {          
@@ -269,7 +307,11 @@ void loop() {
               analogWrite(15, 0);
               encoder0Pos = 0;              // zero encoder
               homeFlag = 2;
-            }       
+            }  
+
+            if (prox == 0) {
+              encoder0Pos = 0;              // always zero encoder when it hits to the top
+            }
 
             // drive motor
 
@@ -359,8 +401,7 @@ void loop() {
             k.header.frame_id = base_link;
             k.child_frame_id = arm;
 
-            zArm = 1.0 + ((0.5/50000) * encoder0Pos);
-            
+            zArm = 1.0 + ((0.5/50000) * encoder0Pos);            
            
             k.transform.translation.x = (x3/1000)-0.1;  
             k.transform.translation.y = (y3/1000)*-1;
@@ -430,14 +471,34 @@ void loop() {
                 foldFlag = 0;
                 fold = 2;
             }
-            
 
-            demandArmXAccum = demandArmXAccum + (demandArmX * 10);   /// add or subtract to the value on each cycle.
-            demandArmXAccum = constrain(demandArmXAccum,-300,300);
-            x3 = map(demandArmXAccum, -300,300,580,350);
+            // arm data hendling and kinematics
 
-            demandArmYAccum = demandArmYAccum + (demandArmY * 10);   /// add or subtract to the value on each cycle.
-            y3 = constrain(demandArmYAccum,-300,300);
+            Serial6.print(armX);      // Vector3 messages received
+            Serial6.print(" , ");
+            Serial6.print(armY);
+            Serial6.print(" , ");
+            Serial6.print(armZ);  
+            Serial6.print(" *** ");     
+            Serial6.print(x3);
+            Serial6.print(" , ");
+            Serial6.print(y3);
+            Serial6.print(" , ");
+            Serial6.print(demandArmZAccum);
+
+            Serial6.println();
+                 
+
+            //demandArmXAccum = demandArmXAccum + (demandArmX * 10);   /// add or subtract to the value on each cycle.
+            //demandArmXAccum = constrain(demandArmXAccum,-300,300);
+            //x3 = map(demandArmXAccum, -300,300,580,350);
+            x3 = armX;    // use Vector3 message from vision/depth instead
+            x3 = constrain(x3,350,580);
+
+            //demandArmYAccum = demandArmYAccum + (demandArmY * 10);   /// add or subtract to the value on each cycle.
+            //y3 = constrain(demandArmYAccum,-300,300);
+            y3 = armY;    // use Vector3 message from vision/depth instead
+            y3 = constrain(y3,-300,300);
 
             if (fold == 5) {        // only run kinematics if arm is folded out
     
@@ -468,7 +529,14 @@ void loop() {
     
                   pos40 = (270 - ((shoulderAngle1Degrees + shoulderAngle2aDegrees) + (elbowAngle1Degrees+27) + 126))*-1;
     
-            }   // end of kinematics        
+            }   // end of kinematics 
+
+            // control the Eye tilt
+
+            demandEyeAccum = demandEyeAccum + (demandEye * 10);   // add or subtract to the value on each cycle.
+            demandEyeAccum = constrain(demandEyeAccum,-300,300);
+
+            pos50 = map(demandEyeAccum,-300,300,-90,90);                     // constrain to the limits we want the eye to turn in degrees
             
             // constrain joints so we can't break the robot
             
@@ -476,20 +544,57 @@ void loop() {
             pos20 = constrain(pos20,90,180);
             pos30 = constrain(pos30,90,180);
             pos40 = constrain(pos40,-90,90);
-          
+            pos50 = constrain(pos50,-90,90);
+       
             //turn all the joints around so we can give the joint the actual angle, taking into account the servo offsets for default positions.
           
             finPos10 = offset10 + pos10;
             finPos20 = offset20 + (180-pos20);
             finPos30 = offset30 - (180-pos30);
             finPos40 = offset40 + pos40;
+            finPos50 = offset50 + pos50;
+
           
-            // write the joint positions to the servos
-          
-            dxl.setGoalPosition(10, finPos10, UNIT_DEGREE);
-            dxl.setGoalPosition(20, finPos20, UNIT_DEGREE);
-            dxl.setGoalPosition(30, finPos30, UNIT_DEGREE);
-            dxl.setGoalPosition(40, finPos40, UNIT_DEGREE);
+            // write the joint positions to the servos, but only if they change.
+            // the ROSserial library needs lots of time or it times out, so we keep other things to a minimum.
+
+            if (finPos10 != finPos10Prev) {          
+              dxl.setGoalPosition(10, finPos10, UNIT_DEGREE);
+            }
+
+            if (finPos20 != finPos20Prev) {          
+              dxl.setGoalPosition(20, finPos20, UNIT_DEGREE);
+            }
+
+            if (finPos30 != finPos30Prev) {          
+              dxl.setGoalPosition(30, finPos30, UNIT_DEGREE);
+            }
+
+            if (finPos40 != finPos40Prev) {          
+              dxl.setGoalPosition(40, finPos40, UNIT_DEGREE);
+            }
+
+            if (finPos50 != finPos50Prev) {          
+              dxl.setGoalPosition(50, finPos50, UNIT_DEGREE);
+            }
+
+            // bookmark previous values so we know if they changed
+
+            finPos10Prev = finPos10;
+            finPos20Prev = finPos20;
+            finPos30Prev = finPos30;
+            finPos40Prev = finPos40;
+            finPos50Prev = finPos50;
+
+            // publish eye angle as a ROStopic/message
+
+            pos50Pub = dxl.getPresentPosition(50, UNIT_DEGREE);   // read actual angle from servo
+
+            pos50Pub = map(pos50Pub,90,270,180,0);
+            eye_msg.data = pos50Pub;
+            pub_eye.publish(&eye_msg);                            // publish as ROS message
+
+
 
         } // end of timed loop
 
