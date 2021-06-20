@@ -83,3 +83,48 @@ You can also add a couple of obstacles in the environment and check if the LiDAR
 roslaunch rur_detailed_description display.launch
 ```
 <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/display_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/lidar_teleop.gif?raw=true" width="400"/>
+
+RViz is also a place where you can closely inspect the URDF of the robot and look at the detailed TF structer of the robot
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/detailed_tf.png?raw=true" width="800"/>
+
+
+### Running the RUR in a simulated world
+
+Once you have tested that both Gazebo and RViz are working properly, then comes the part where you can actually simulate the robot in a virtual world and do mapping and navigation. Just like we run 'rur_bringup.launch' file while working on real robot similarly to start the simulation, we need to launch the 'rur_house.launch' file that will launch gazebo with RUR in a house environment. You can also run 'display.launch' file to view the LiDAR data at the same time. This eleminates the step of manually opening RViz for mapping and setting up different parameters 
+```
+roslaunch rur_gazebo rur_house.launch
+```
+```
+roslaunch rur_detailed_description display.launch
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_house_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_house_display.png?raw=true" width="400"/>
+
+
+### Mapping
+
+The command of mapping is the same as the original robot. Just you don't need to open up RViz separetly as you already have 'display.launch' running.
+```
+rosrun gmapping slam_gmapping scan:=scan
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/gmapping_2.png?raw=true" width="800"/>
+
+Also you can run the teleop node in a separate terminal and move the robot around
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_001.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_003.gif?raw=true" width="400"/>
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_002.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_004.gif?raw=true" width="400"/>
+
+Once you have completed generating the map, before saving the map, navigate to the directory where you want to save the map through your terminal and run the following command to save it.
+```
+rosrun map_server map_saver -f name_of_map
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/map_completed.png?raw=true" width="360"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/map_saver_terminal.png?raw=true" width="440"/>
+
+You can then navigate to the directory from your file manager to check if the map is properly saved
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/final_map_pgm.png?raw=true" width="800"/>
+
+### Navigation
+
+Coming soon...
