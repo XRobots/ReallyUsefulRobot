@@ -55,6 +55,7 @@ If you have not downloaded the full-desktop-version of ROS which comes with Gaze
 sudo apt-get install gazebo9 libgazebo9-* ros-melodic-robot-state-publisher ros-melodic-robot-joint-state-publisher ros-melodic-robot-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-gmapping ros-melodic-slam-gmapping ros-melodic-map-server
 ```
 
+
 ### Testing the simulation
 
 Firstly, please place this complete repository or just the ROS folder into your src folder of [catkin_ws](http://wiki.ros.org/catkin/Tutorials) and run catkin_make command. Once the catkin_make is done successfully, then to launch the robot in an empty simulation world for testing in Gazebo Simulator, run the following command on your terminal
@@ -62,4 +63,23 @@ Firstly, please place this complete repository or just the ROS folder into your 
 ```
 roslaunch rur_detailed_description gazebo.launch
 ```
-![roslaunch rur_detailed_description gazebo.launch](https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/ROS/rur_gazebo/sample/pictures/gazebo_launch.png)
+<img src="https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/ROS/rur_gazebo/sample/pictures/gazebo_launch.png" width="800"/>
+
+Once you have successfully launched the simulation, you can also run the Teleop node to teleoprate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
+* i = move forward
+* k = stop
+* j = rotate left
+* l = rotate right
+* , = move backward
+* along with few more operations like 'u','o','m','.' to go forward-left, forward-right, backward-left and backward-right respectively
+
+```
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/teleop.gif?raw=true" width="800"/>
+
+You can also add a couple of obstacles in the environment and check if the LiDAR is able to detect them. Just run the following command and it will open up RViz which is a robot visualization tool that helps you visualize sensor data from the robot.
+```
+roslaunch rur_detailed_description display.launch
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/display_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/lidar_teleop.gif?raw=true" width="400"/>
