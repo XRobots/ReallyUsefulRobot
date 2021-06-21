@@ -45,6 +45,19 @@ After the map is complete you can launch the rur_navigation package which will o
 
 ## Simulation
 
+> **_NOTE:_** The following content in the README includes implementation and documentation of Simulation package of ReallyUsefulRobot and is being made by [Pranshu Tople](https://youtube.com/PranshuTople) and is been documented LIVE on his [YouTube Playlist](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_). James Bruton is not responsible if the following simulation package has any issues. So if face any problem in simulation, you can open up a GitHub Issue and tag [Pranshu Tople's Github Account](https://github.com/PranshuTople). Hope you enjoy Simulating ReallyUsefulRobot on your PC ☺️✌🏼
+
+<p>
+<a href="https://youtu.be/o7w7yv-Nros">
+<img src="https://i.ytimg.com/vi/o7w7yv-Nros/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhGhEFdGOBm9ZE0_pY4HwFKp8h5Q" width="200" alt="Fusion2URDF"></a>
+<a href="https://youtu.be/ufYxkNnEFYw">
+<img src="https://i.ytimg.com/vi/ufYxkNnEFYw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAEfPaPFhJ5YQo_Nf3vBbhjiin_LQ" width="200" alt="Teleoperation & Gazebo Plugins"></a>
+<a href="https://youtu.be/lZVa8o1yxz0">
+<img src="https://i.ytimg.com/vi/lZVa8o1yxz0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBiha28yrXXqcnPONLoZU4yjIdT-w" width="200" alt="Mapping in Simulation"></a>
+<a href="https://youtu.be/DU31PuQjK-I">
+<img src="https://i.ytimg.com/vi/DU31PuQjK-I/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxoNuIKCBMGStX4nwKHRc9V03mTg" width="200" alt="Navigation in Simulation"></a>
+</p>
+
 You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up gates for the Open-Source community to build various different applications around RUR.
 
 ### Downloading Pre-requisites
@@ -127,4 +140,26 @@ You can then navigate to the directory from your file manager to check if the ma
 
 ### Navigation
 
-Coming soon...
+To run naviagtion, firstly you have to make sure that the simulation is running properly. Run the following command to start the simulation
+```
+roslaunch rur_gazebo rur_house.launch
+```
+Once you have the simulation running properly with the robot spawned in the middle, now you can run the same navigation file which is used to start navigation on the real robot that is -
+```
+roslaunch rur_navigation rur_navigation.launch
+```
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_navigation_launch.png?raw=true" width="800"/>
+
+But here, you dont need to give any location of the map as the default location of the map is set to the house map. If you want to pass some other map, then you can pass the respective argument. There is no need to launch 'display.launch' as this will start RViz automatically and you can give 2D Nav Goal to the robot
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_give_goal.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_goal_plan.png?raw=true" width="400"/>
+
+Once you give the navigation goal, the robot will start navigating to the goal location autonomously in Gazebo and you can visualize that in RViz at the same time. Once you reach the Goal, you will also get a prompt on the terminal that the robot has Reached the Goal...
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/navigation.gif?raw=true" width="800"/>
+
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_goal_reached.png?raw=true" width="460"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_terminal.png?raw=true" width="340"/>
+
+Everything related to Simulation you see on this repository was streamed & documented LIVE on Youtube. To Learn more about the Simulation Package in detail and if you wish to see how is it implemented, then check out the following [Playlist on Youtube](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_)
+
+If you have any doubts or questions regarding simulation, then either you can comment that on Youtube or else open a Github Issue. 
