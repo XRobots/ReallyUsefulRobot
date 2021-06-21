@@ -76,7 +76,7 @@ Firstly, please place this complete repository or just the ROS folder into your 
 ```
 roslaunch rur_detailed_description gazebo.launch
 ```
-<img src="https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/ROS/rur_gazebo/sample/pictures/gazebo_launch.png" width="800"/>
+<img src="https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/resources/pictures/gazebo_launch.png" width="800"/>
 
 Once you have successfully launched the simulation, you can also run the Teleop node to teleoprate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
 * i = move forward
@@ -89,17 +89,17 @@ Once you have successfully launched the simulation, you can also run the Teleop 
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/teleop.gif?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/teleop.gif?raw=true" width="800"/>
 
 You can also add a couple of obstacles in the environment and check if the LiDAR is able to detect them. Just run the following command and it will open up RViz which is a robot visualization tool that helps you visualize sensor data from the robot.
 ```
 roslaunch rur_detailed_description display.launch
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/display_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/lidar_teleop.gif?raw=true" width="400"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/display_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/lidar_teleop.gif?raw=true" width="400"/>
 
 RViz is also a place where you can closely inspect the URDF of the robot and look at the detailed TF structer of the robot
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/detailed_tf.png?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/detailed_tf.png?raw=true" width="800"/>
 
 
 ### Running the RUR in a simulated world
@@ -111,7 +111,7 @@ roslaunch rur_gazebo rur_house.launch
 ```
 roslaunch rur_detailed_description display.launch
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_house_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_house_display.png?raw=true" width="400"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/rur_house_launch.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/rur_house_display.png?raw=true" width="400"/>
 
 
 ### Mapping
@@ -120,23 +120,23 @@ The command of mapping is the same as the original robot. Just you don't need to
 ```
 rosrun gmapping slam_gmapping scan:=scan
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/gmapping_2.png?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/gmapping_2.png?raw=true" width="800"/>
 
 Also you can run the teleop node in a separate terminal and move the robot around
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_001.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_003.gif?raw=true" width="400"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/mapping_house_001.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/mapping_house_003.gif?raw=true" width="400"/>
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_002.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/mapping_house_004.gif?raw=true" width="400"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/mapping_house_002.gif?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/mapping_house_004.gif?raw=true" width="400"/>
 
 Once you have completed generating the map, before saving the map, navigate to the directory where you want to save the map through your terminal and run the following command to save it.
 ```
 rosrun map_server map_saver -f name_of_map
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/map_completed.png?raw=true" width="360"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/map_saver_terminal.png?raw=true" width="440"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/map_completed.png?raw=true" width="360"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/map_saver_terminal.png?raw=true" width="440"/>
 
 You can then navigate to the directory from your file manager to check if the map is properly saved
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/final_map_pgm.png?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/final_map_pgm.png?raw=true" width="800"/>
 
 ### Navigation
 
@@ -148,17 +148,17 @@ Once you have the simulation running properly with the robot spawned in the midd
 ```
 roslaunch rur_navigation rur_navigation.launch
 ```
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/rur_navigation_launch.png?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/rur_navigation_launch.png?raw=true" width="800"/>
 
 But here, you dont need to give any location of the map as the default location of the map is set to the house map. If you want to pass some other map, then you can pass the respective argument. There is no need to launch 'display.launch' as this will start RViz automatically and you can give 2D Nav Goal to the robot
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_give_goal.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_goal_plan.png?raw=true" width="400"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_give_goal.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_goal_plan.png?raw=true" width="400"/>
 
 Once you give the navigation goal, the robot will start navigating to the goal location autonomously in Gazebo and you can visualize that in RViz at the same time. Once you reach the Goal, you will also get a prompt on the terminal that the robot has Reached the Goal...
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/gifs/navigation.gif?raw=true" width="800"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/gifs/navigation.gif?raw=true" width="800"/>
 
-<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_goal_reached.png?raw=true" width="460"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/ROS/rur_gazebo/sample/pictures/navigation_terminal.png?raw=true" width="340"/>
+<img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_goal_reached.png?raw=true" width="460"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_terminal.png?raw=true" width="340"/>
 
 Everything related to Simulation you see on this repository was streamed & documented LIVE on Youtube. To Learn more about the Simulation Package in detail and if you wish to see how is it implemented, then check out the following [Playlist on Youtube](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_)
 
