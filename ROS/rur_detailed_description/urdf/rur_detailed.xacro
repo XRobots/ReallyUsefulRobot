@@ -19,7 +19,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -40,7 +40,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/right_wheel.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.0 0.227 -0.099839"/>
@@ -61,7 +61,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.0 -0.227 -0.099839"/>
@@ -82,7 +82,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/right_tyre.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.0 0.2 -0.1"/>
@@ -103,7 +103,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/left_tyre.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.0 -0.2 -0.1"/>
@@ -124,7 +124,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/front_caster.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.172 -0.0 -0.07"/>
@@ -145,7 +145,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/back_caster.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.172 0.0 -0.07"/>
@@ -166,7 +166,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/lid.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.225 -0.0002 -0.25"/>
@@ -187,7 +187,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="black"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.1575 0.0 -0.3"/>
@@ -208,7 +208,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/electronics_lid.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.035 -0.015 -0.28"/>
@@ -229,7 +229,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/long_bar.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="grey"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.015 -0.0 -0.291"/>
@@ -250,7 +250,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/head.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.111 -0.0 -1.005"/>
@@ -271,7 +271,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/visor.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.1393 0.068 -1.129264"/>
@@ -292,7 +292,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/monitor_cover.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.172658 0.068 -1.211058"/>
@@ -313,7 +313,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/right_ear.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.02025 0.134173 -1.18"/>
@@ -334,7 +334,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/left_ear.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.02025 -0.134173 -1.18"/>
@@ -355,7 +355,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/monitor.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="black"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.184031 -0.0 -1.231753"/>
@@ -376,7 +376,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/left_antenna.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.18275 -0.076 -1.335"/>
@@ -397,7 +397,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/right_antenna.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.18275 0.076 -1.335"/>
@@ -418,7 +418,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/camera_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="white"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.18275 0.072 -1.335"/>
@@ -439,7 +439,7 @@
     <geometry>
       <mesh filename="package://rur_detailed_description/meshes/realsense.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="grey"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.213442 -0.0 -1.3275"/>
@@ -569,12 +569,18 @@
   <child link="right_antenna"/>
 </joint>
 
-<joint name="camera_joint" type="revolute">
+<!-- <joint name="camera_joint" type="revolute">
   <origin rpy="0 0 0" xyz="0.07175 -0.072 0.33"/>
   <parent link="head"/>
   <child link="camera_link"/>
   <axis xyz="0.0 1.0 -0.0"/>
   <limit effort="100" lower="-3.141593" upper="3.141593" velocity="100"/>
+</joint> -->
+
+<joint name="camera_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.07175 -0.072 0.33"/>
+  <parent link="head"/>
+  <child link="camera_link"/>
 </joint>
 
 <joint name="Rigid20" type="fixed">
