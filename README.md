@@ -21,11 +21,11 @@ Other electronics so far include:
 
 ## Software
 
-Obviously this isn't a comprehensive guide to ROS, you will need to undestand some core concepts before building this. The Robot runs ROS Melodic on Ubuntu 18.04. This is because the NVIDIA Xavier NX runs 18.04 by default.
+Obviously this isn't a comprehensive guide to ROS, you will need to understand some core concepts before building this. The Robot runs ROS Melodic on Ubuntu 18.04. This is because the NVIDIA Xavier NX runs 18.04 by default.
 
 On the robot:
 
-The arduino code runs on the Teensy 4.1. This talks to the wheel encoders. It subscribres to the cmd_vel topic and publishes Odom, and TF for the robot's motions. The RPLIDAR A2 node publishes the scan topic: https://github.com/robopeak/rplidar_ros
+The arduino code runs on the Teensy 4.1. This talks to the wheel encoders. It subscribes to the cmd_vel topic and publishes Odom, and TF for the robot's motions. The RPLIDAR A2 node publishes the scan topic: https://github.com/robopeak/rplidar_ros
 
 The Teensy also talks to the ODrive on Serial1. In order to get the ROS Serial library running on the Teensy 4.1, and get both the ROS Serial library and the ODrive library to run together I had to make various modifications. I removed mentions of the Stream Operator which were in the original ODrive Arduino example: https://github.com/madcowswe/ODrive/tree/master/Arduino/ODriveArduino/examples/ I also had to modify the ROS Serial library to add Teensy 4.1 support, and increase buffers so that the Odom message could be published over Serial. I've included both modified libraries as zip files.
 
@@ -104,7 +104,7 @@ RViz is also a place where you can closely inspect the URDF of the robot and loo
 
 ### Running the RUR in a simulated world
 
-Once you have tested that both Gazebo and RViz are working properly, then comes the part where you can actually simulate the robot in a virtual world and do mapping and navigation. Just like we run 'rur_bringup.launch' file while working on real robot similarly to start the simulation, we need to launch the 'rur_house.launch' file that will launch gazebo with RUR in a house environment. You can also run 'display.launch' file to view the LiDAR data at the same time. This eleminates the step of manually opening RViz for mapping and setting up different parameters 
+Once you have tested that both Gazebo and RViz are working properly, then comes the part where you can actually simulate the robot in a virtual world and do mapping and navigation. Just like we run 'rur_bringup.launch' file while working on real robot similarly to start the simulation, we need to launch the 'rur_house.launch' file that will launch gazebo with RUR in a house environment. You can also run 'display.launch' file to view the LiDAR data at the same time. This eliminates the step of manually opening RViz for mapping and setting up different parameters 
 ```
 roslaunch rur_gazebo rur_house.launch
 ```
@@ -116,7 +116,7 @@ roslaunch rur_detailed_description display.launch
 
 ### Mapping
 
-The command of mapping is the same as the original robot. Just you don't need to open up RViz separetly as you already have 'display.launch' running.
+The command of mapping is the same as the original robot. Just you don't need to open up RViz separately as you already have 'display.launch' running.
 ```
 rosrun gmapping slam_gmapping scan:=scan
 ```
@@ -140,7 +140,7 @@ You can then navigate to the directory from your file manager to check if the ma
 
 ### Navigation
 
-To run naviagtion, firstly you have to make sure that the simulation is running properly. Run the following command to start the simulation
+To run navigation, firstly you have to make sure that the simulation is running properly. Run the following command to start the simulation
 ```
 roslaunch rur_gazebo rur_house.launch
 ```
@@ -150,7 +150,7 @@ roslaunch rur_navigation rur_navigation.launch
 ```
 <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/rur_navigation_launch.png?raw=true" width="800"/>
 
-But here, you dont need to give any location of the map as the default location of the map is set to the house map. If you want to pass some other map, then you can pass the respective argument. There is no need to launch 'display.launch' as this will start RViz automatically and you can give 2D Nav Goal to the robot
+But here, you don't need to give any location of the map as the default location of the map is set to the house map. If you want to pass some other map, then you can pass the respective argument. There is no need to launch 'display.launch' as this will start RViz automatically and you can give 2D Nav Goal to the robot
 
 <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_give_goal.png?raw=true" width="400"/> <img src="https://github.com/PranshuTople/ReallyUsefulRobot/blob/main/resources/pictures/navigation_goal_plan.png?raw=true" width="400"/>
 
@@ -163,3 +163,4 @@ Once you give the navigation goal, the robot will start navigating to the goal l
 Everything related to Simulation you see on this repository was streamed & documented LIVE on Youtube. To Learn more about the Simulation Package in detail and if you wish to see how is it implemented, then check out the following [Playlist on Youtube](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_)
 
 If you have any doubts or questions regarding simulation, then either you can comment that on Youtube or else open a Github Issue. 
+
