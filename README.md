@@ -2,7 +2,7 @@
 
 ## Hardware
 
-CAD files are provided in a STEP / STP format. This is the whole assembly as a solid format so you can easily edit it. You will need to load it into some CAD software and edit/export individual STLs for printing.
+CAD files are provided in a STEP/STP format. This is the whole assembly as a solid format so you can easily edit it. You will need to load it into some CAD software and edit/export individual STLs for printing.
 
 Tyres are printed in TPU, I used Ninjaflex. The rest in PLA printed with a combination of 0.5mm and 1.2mm nozzle.
 
@@ -45,7 +45,7 @@ After the map is complete you can launch the rur_navigation package which will o
 
 ## Simulation
 
-> **_NOTE:_** The following content in the README includes implementation and documentation of Simulation package of ReallyUsefulRobot and is being made by [Pranshu Tople](https://youtube.com/PranshuTople) and is been documented LIVE on his [YouTube Playlist](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_). James Bruton is not responsible if the following simulation package has any issues. So if face any problem in simulation, you can open up a GitHub Issue and tag [Pranshu Tople's Github Account](https://github.com/PranshuTople). Hope you enjoy Simulating ReallyUsefulRobot on your PC ☺️✌🏼
+> **_NOTE:_** The following content in the README includes implementation and documentation of Simulation package of ReallyUsefulRobot and is being made by [Pranshu Tople](https://youtube.com/PranshuTople) and is being documented LIVE on his [YouTube Playlist](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_). James Bruton is not responsible if the following simulation package has any issues. So if faced any problem in simulation, you can open up a GitHub Issue and tag [Pranshu Tople's Github Account](https://github.com/PranshuTople). Hope you enjoy Simulating ReallyUsefulRobot on your PC ☺️✌🏼
 
 <p>
 <a href="https://youtu.be/o7w7yv-Nros">
@@ -58,11 +58,11 @@ After the map is complete you can launch the rur_navigation package which will o
 <img src="https://i.ytimg.com/vi/DU31PuQjK-I/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxoNuIKCBMGStX4nwKHRc9V03mTg" width="200" alt="Navigation in Simulation"></a>
 </p>
 
-You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up gates for the Open-Source community to build various different applications around RUR.
+You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have the simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up the gates for the Open-Source community to build various different applications around RUR.
 
 ### Downloading Pre-requisites
 
-If you have not downloaded the full-desktop-version of ROS which comes with Gazebo Simulator, then you might need to download a couple of pre-requisites to run the simulation. Even if you have downloaded the full version, yet its a good practice to run the following command which checks if all the pre-requisites are installed or not. And if they are not installed, then the same command downloads them all automatically.
+If you have not downloaded the full-desktop-version of ROS, which comes with Gazebo Simulator, then you might need to download a couple of pre-requisites to run the simulation. Even if you have downloaded the full version, yet it's a good practice to run the following command which checks if all the pre-requisites are installed or not. And if they are not installed, then the same command downloads them all automatically.
 
 ```
 sudo apt-get install gazebo9 libgazebo9-* ros-melodic-robot-state-publisher ros-melodic-robot-joint-state-publisher ros-melodic-robot-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-gmapping ros-melodic-slam-gmapping ros-melodic-map-server
@@ -78,7 +78,7 @@ roslaunch rur_detailed_description gazebo.launch
 ```
 <img src="https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/resources/pictures/gazebo_launch.png" width="800"/>
 
-Once you have successfully launched the simulation, you can also run the Teleop node to teleoprate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
+Once you have successfully launched the simulation, you can also run the Teleop node to teleoperate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
 * i = move forward
 * k = stop
 * j = rotate left
