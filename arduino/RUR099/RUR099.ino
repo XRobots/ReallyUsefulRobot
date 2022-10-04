@@ -409,8 +409,8 @@ void loop() {
 
             k.transform.rotation = tf::createQuaternionFromYaw(0);
 
-            broadcaster.sendTransform(k);
             k.header.stamp = nh.now();
+            broadcaster.sendTransform(k);
 
             // *** broadcast odom message ***
 
