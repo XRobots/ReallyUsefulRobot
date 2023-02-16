@@ -1,0 +1,31 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="/cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+   
+      <rosparam file="$(find hotel_robot)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find hotel_robot)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find hotel_robot)/params/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find hotel_robot)/params/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find hotel_robot)/params/move_base_params.yaml" command="load" />
+      <rosparam file="$(find hotel_robot)/params/teb_local_planner_params.yaml" command="load" />
+      <param name="controller_frequency" value="10.0" /> -->
+
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+   
+      <rosparam file="$(find nct_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find nct_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find nct_navigation)/params/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find nct_navigation)/params/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find nct_navigation)/params/base_local_planner_params_teb.yaml" command="load" />
+      <rosparam file="$(find nct_navigation)/params/base_global_planner_param.yaml" command="load" />
+      <param name="controller_frequency" value="10.0" />
+
+  </node>
+</launch>
