@@ -2,30 +2,30 @@
 
 ## Hardware
 
-CAD files are provided in STEP/STP format. This is the whole assembly as a solid format so you can easily edit it. You will need to load it into some CAD software and edit/export individual STLs for printing.
+CAD files are provided in a STEP/STP format. This is the whole assembly as a solid format so you can easily edit it. You will need to load it into some CAD software and edit/export individual STLs for printing.
 
-Tyres are printed in TPU, I used Ninjaflex. The rest in PLA printed with a combination of 0.5mm and 1.2mm nozzles.
+Tyres are printed in TPU, I used Ninjaflex. The rest in PLA printed with a combination of 0.5mm and 1.2mm nozzle.
 
-Motors are 6374 150Kv BLDC motors from the ODrive store: https://odriverobotics.com/shop
-Encoders and cables are the 8192 CPR encoders also from the ODrive store.
-I used a 56V ODrive 3.6, the robot runs from a 24V LiPo, but it can be 25V+ when it's charged.
-Wheel Drive belts are 590mm T5 12mm wide PU belts with steel tensioners made by Synchroflex.
-'Utility Stick' drive belt is an HTD 5mm pitch 15mm wide 1790mm length belt.
+Motors are 6374 150Kv BLDC motors from the ODrive store: https://odriverobotics.com/shop 
+Encoders and cables are the 8192 CPR encoders also from the ODrive store. 
+I used a 56V ODrive 3.6, the robot runs from a 24V LiPo, but it can be 25V+ when it's charged. 
+Wheel Drive belts are 590mm T5 12mm wide PU belts with steel tensions made by Synchroflex. 'Utility Stick' drive belt is an HTD 5mm pitch 15mm wide 1790mm long belt.
 
 Other electronics so far include:
 
--Teensy 4.1
--NVIDIA Xavier NX
--RPLIDAR A2
--24v and 11.1v lipos, switches and wiring etc
+-Teensy 4.1 
+-NVIDIA Xavier NX 
+-RPLIDAR A2 
+-24v and 11.1v Lipos 
+-Switches and wiring etc.
 
 ## Software
 
-Obviously this isn't a comprehensive guide to ROS, you will need to undestand some core concepts before building this. The Robot runs ROS Melodic on Ubuntu 18.04. This is because the NVIDIA Xavier NX runs 18.04 by default.
+Obviously this isn't a comprehensive guide to ROS, you will need to understand some core concepts before building this. The Robot runs ROS Melodic on Ubuntu 18.04. This is because the NVIDIA Xavier NX runs 18.04 by default.
 
 On the robot:
 
-The arduino code runs on the Teensy 4.1. This talks to the wheel encoders. It subscribres to the cmd_vel topic and publishes Odom, and TF for the robot's motions. The RPLIDAR A2 node publishes the scan topic: https://github.com/robopeak/rplidar_ros
+The Arduino code runs on the Teensy 4.1. This talks to the wheel encoders. It subscribes to the cmd_vel topic and publishes Odom, and TF for the robot's motions. The RPLIDAR A2 node publishes the scan topic: https://github.com/robopeak/rplidar_ros
 
 The Teensy also talks to the ODrive on Serial1. In order to get the ROS Serial library running on the Teensy 4.1, and get both the ROS Serial library and the ODrive library to run together I had to make various modifications. I removed mentions of the Stream Operator which were in the original ODrive Arduino example: https://github.com/madcowswe/ODrive/tree/master/Arduino/ODriveArduino/examples/ I also had to modify the ROS Serial library to add Teensy 4.1 support, and increase buffers so that the Odom message could be published over Serial. I've included both modified libraries as zip files.
 
@@ -45,7 +45,7 @@ After the map is complete you can launch the rur_navigation package which will o
 
 ## Simulation
 
-> **_NOTE:_** The following content in the README includes implementation and documentation of Simulation package of ReallyUsefulRobot and is being made by [Pranshu Tople](https://youtube.com/PranshuTople) and is been documented LIVE on his [YouTube Playlist](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_). James Bruton is not responsible if the following simulation package has any issues. So if face any problem in simulation, you can open up a GitHub Issue and tag [Pranshu Tople's Github Account](https://github.com/PranshuTople). Hope you enjoy Simulating ReallyUsefulRobot on your PC ☺️✌🏼
+> **_NOTE:_** The following content in the README includes implementation and documentation of Simulation package of ReallyUsefulRobot and is being made by [Pranshu Tople](https://youtube.com/PranshuTople) and is being documented LIVE on his [YouTube Playlist](https://youtube.com/playlist?list=PLFnCFnTZNyU8-omA_VFztWfeFn2gCyY4_). James Bruton is not responsible if the following simulation package has any issues. So if faced any problem in simulation, you can open up a GitHub Issue and tag [Pranshu Tople's Github Account](https://github.com/PranshuTople). Hope you enjoy Simulating ReallyUsefulRobot on your PC ☺️✌🏼
 
 <p>
 <a href="https://youtu.be/o7w7yv-Nros">
@@ -58,11 +58,11 @@ After the map is complete you can launch the rur_navigation package which will o
 <img src="https://i.ytimg.com/vi/DU31PuQjK-I/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxoNuIKCBMGStX4nwKHRc9V03mTg" width="200" alt="Navigation in Simulation"></a>
 </p>
 
-You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up gates for the Open-Source community to build various different applications around RUR.
+You don't have to worry anymore if you don't have enough capital to build the RUR robot! You can simply follow the guide given below, and you will have the simulation of RUR running on your PC without any issue. The simulation works exactly like the real robot and communicates on the same topic lists. So if you make some software or package for simulated robot, the same would work on real RUR robot without any problem. This opens up the gates for the Open-Source community to build various different applications around RUR.
 
 ### Downloading Pre-requisites
 
-If you have not downloaded the full-desktop-version of ROS which comes with Gazebo Simulator, then you might need to download a couple of pre-requisites to run the simulation. Even if you have downloaded the full version, yet its a good practice to run the following command which checks if all the pre-requisites are installed or not. And if they are not installed, then the same command downloads them all automatically.
+If you have not downloaded the full-desktop-version of ROS, which comes with Gazebo Simulator, then you might need to download a couple of pre-requisites to run the simulation. Even if you have downloaded the full version, yet it's a good practice to run the following command which checks if all the pre-requisites are installed or not. And if they are not installed, then the same command downloads them all automatically.
 
 ```
 sudo apt-get install gazebo9 libgazebo9-* ros-melodic-robot-state-publisher ros-melodic-robot-joint-state-publisher ros-melodic-robot-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-gmapping ros-melodic-slam-gmapping ros-melodic-map-server
@@ -78,7 +78,7 @@ roslaunch rur_detailed_description gazebo.launch
 ```
 <img src="https://raw.githubusercontent.com/PranshuTople/ReallyUsefulRobot/main/resources/pictures/gazebo_launch.png" width="800"/>
 
-Once you have successfully launched the simulation, you can also run the Teleop node to teleoprate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
+Once you have successfully launched the simulation, you can also run the Teleop node to teleoperate you robot using keyboard. To run the node, paste the following command in a new terminal and you can move your robot around using ' i ' ,' j ' , ' k ' , ' l ' , ' , '<br>
 * i = move forward
 * k = stop
 * j = rotate left
