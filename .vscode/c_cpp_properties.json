@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ovali/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/ovali/catkin_ws/src/navigation/amcl/include/**",
+        "/home/ovali/catkin_ws/src/navigation/base_local_planner/include/**",
+        "/home/ovali/catkin_ws/src/navigation/carrot_planner/include/**",
+        "/home/ovali/catkin_ws/src/navigation/clear_costmap_recovery/include/**",
+        "/home/ovali/catkin_ws/src/navigation/costmap_2d/include/**",
+        "/home/ovali/catkin_ws/src/navigation/dwa_local_planner/include/**",
+        "/home/ovali/catkin_ws/src/navigation/global_planner/include/**",
+        "/home/ovali/catkin_ws/src/navigation/map_server/include/**",
+        "/home/ovali/catkin_ws/src/navigation/move_base/include/**",
+        "/home/ovali/catkin_ws/src/navigation/move_slow_and_clear/include/**",
+        "/home/ovali/catkin_ws/src/navigation/nav_core/include/**",
+        "/home/ovali/catkin_ws/src/navigation/navfn/include/**",
+        "/home/ovali/catkin_ws/src/rosserial/rosserial_server/include/**",
+        "/home/ovali/catkin_ws/src/rosserial/rosserial_test/include/**",
+        "/home/ovali/catkin_ws/src/navigation/rotate_recovery/include/**",
+        "/home/ovali/catkin_ws/src/navigation/voxel_grid/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
