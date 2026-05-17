@@ -1,3 +1,8 @@
+## about
+
+wheeled robot from this video:  youtube.com/watch?v=M9ABtlEM788
+controlled with ROS (robot operating system, github.com/ros2) with a focus on computer vision and automation potential.
+
 # ReallyUsefulRobot
 
 ## Hardware
